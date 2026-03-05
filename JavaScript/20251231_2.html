@@ -1,0 +1,32 @@
+<article class="parent">
+  <ol>
+    <li><button class="btn-first" type="button">버튼1</button></li>
+    <li><button type="button">버튼2</button></li>
+    <li><button type="button">버튼3</button></li>
+  </ol>
+</article>
+ 
+<script>
+  const parent = document.querySelector('.parent');
+  parent.addEventListener('click', function (event) {
+    console.log(event);
+    console.log(event.target); // 이벤트가 발생한 요소
+    console.log(event.currentTarget); // 이벤트 리스너가 연결된 요소
+    console.log(event.type); // 이벤트의 종류
+  }); b
+ 
+  window.addEventListener('click', function (event) {
+    console.log(event);
+    console.log(event.clientX, event.clientY);
+    console.log(event.offsetX, event.offsetY);
+    console.log(event.pageX, event.pageY);
+    console.log(event.screenX, event.screenY);
+  });''
+ 
+  window.addEventListener('keydown', function (event) {
+    console.log(event);
+    console.log(event.key); // 눌린 키
+    console.log(event.code); // 눌린 키의 코드
+    console.log(event.keyCode); // 눌린 키의 코드 (deprecated)
+  });
+</script>

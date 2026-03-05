@@ -1,0 +1,51 @@
+이벤트 타입 contextmenu를 이용해 브라우저 오른쪽 버튼 이벤트 막고 '해당 페이지에서는 오른쪽 클릭을 제한합니다.’ 경고 띄우기
+
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+ document.addEventListener('contextmenu', (event) => {
+                event.preventDefault();
+                alert('오른쪽 클릭이 제한됩니다!');
+            });   
+</body>
+</html>
+
+<h1>나의 todo list</h1>
+<p>1. 오늘 저녁에는 부대찌게를 끓여 먹겠다.<button type="button">삭제</button></p>
+<p>2. 후식으로 슈팅스타를 먹겠다.<button type="button">삭제</button></p>
+<p>3. 자기 전에 반드시 내일 아침 메뉴를 생각해두겠다.<button type="button">삭제</button></p>
+위와 같은 HTML코드 구조가 있을 때
+P 태그를 클릭하면 p 태그의 컨텐츠를 출력하는 alert 창을 띄워주고
+삭제 버튼을 클릭하면 삭제할 것인지를 물어보는 confirm 창을 띄워주고, 확인을 누르면 P태그를 삭제합니다.
+
+document.addEventListener('contextmenu', (event) => {
+                event.preventDefault();
+                alert('오른쪽 클릭이 제한됩니다!');
+            });
+
+ const txts = document.querySelectorAll('p');
+            const btns = document.querySelectorAll('button');
+
+            txts.forEach((item) => {
+                item.addEventListener('click', (event) => {
+                    alert(event.target.childNodes[0].textContent);
+                });
+
+            });
+
+            const txts = document.querySelectorAll('p');
+            const btns = document.querySelectorAll('button');
+a
+            txts.forEach((item) => {
+                item.addEventListener('click', (event) => {
+                    alert(event.target.childNodes[0].textContent);
+                });
+
+            });
+            
+

@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HODU | 로그인</title>
+
+  <style>
+    /* ===== 팀 변수(:root) ===== */
+    :root {
+      --background-color: #ffffff;
+      --gray-color: #f2f2f2;
+      --point-color: #21bf48;
+      --border: 1px #c4c4c4 solid;
+      --text-color: #000000;
+      --warning-txt-color: #eb5757;
+      --input-txt-color: #767676;
+    }
+
+    /* ===== 최소 리셋 ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    a { text-decoration: none; color: inherit; }
+    html { font-size: 10px; }
+    body {
+      font-family: system-ui, -apple-system, "Noto Sans KR", Segoe UI, Roboto, sans-serif;
+      background: var(--background-color);
+      color: var(--text-color);
+    }
+
+    /* ===== 목표 화면(로고 + 카드 중앙) ===== */
+    .wrap {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 56px 16px 40px;
+      gap: 26px;
+    }
+
+    .logo img {
+      width: 280px; 
+      max-width: 70vw;     
+      height: auto;
+      display: block;
+    }
+
+    .title {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .card {
+      width: min(760px, 92vw);   
+      border: var(--border);
+      border-radius: 12px;
+      background: var(--background-color);
+      padding: 52px 56px 44px;  
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .label {
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--input-txt-color);
+    }
+
+    /* 입력은 “밑줄 스타일” */
+    .input {
+      width: 100%;
+      border: none;
+      border-bottom: var(--border);
+      background: transparent;
+      outline: none;
+
+      padding: 10px 4px 14px;
+      font-size: 1.8rem;
+      font-weight: 400;
+      color: var(--text-color);
+    }
+
+    .input:focus {
+      border-bottom: 1px solid var(--point-color);
+    }
+
+    /* ✅ 오류 메시지: 버튼 바로 위 */
+    .warn {
+      display: none;
+      margin-top: -8px;
+      font-size: 1.4rem;
+      line-height: 1.6;
+      color: var(--warning-txt-color);
+      word-break: keep-all;
+    }
+    .warn.show { display: block; }
+
+    .btn {
+      width: 100%;
+      height: 72px;
+      margin-top: 10px;
+
+      border: none;
+      border-radius: 10px;
+      background: var(--point-color);
+      color: #fff;
+
+      font-size: 2rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn:disabled { opacity: .6; cursor: not-allowed; }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin-top: 6px;
+      font-size: 1.8rem;
+      color: var(--input-txt-color);
+    }
+    .links a:hover { text-decoration: underline; }
+
+    /* 모바일 */
+    @media (max-width: 480px) {
+      .card { padding: 36px 18px 30px; }
+      .btn { height: 64px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+    <!-- ✅ 로고: 경로만 네 프로젝트에 맞게 -->
+    <div class="logo">
+      <img src="./images/Logo-hodu.png" alt="HODU" />
+    </div>
+
+    <h1 class="title">로그인</h1>
+
+    <section class="card" aria-label="로그인 폼">
+      <form id="loginForm" class="form" novalidate>
+        <div class="field">
+          <div class="label">아이디</div>
+          <input id="username" class="input" type="text" autocomplete="username" aria-describedby="warnBox" />
+        </div>
+
+        <div class="field">
+          <div class="label">비밀번호</div>
+          <input id="password" class="input" type="password" autocomplete="current-password" aria-describedby="warnBox" />
+        </div>
+
+        <!-- ✅ 여기서 “ㆍ 메시지”가 로그인 버튼 위로 뜸 -->
+        <div id="warnBox" class="warn" role="alert" aria-live="polite"></div>
+
+        <button id="loginBtn" class="btn" type="submit">로그인</button>
+      </form>
+    </section>
+
+    <nav class="links" aria-label="하단 링크">
+      <a href="./signup.html">회원가입</a>
+      <span aria-hidden="true">|</span>
+      <a href="./find-password.html">비밀번호 찾기</a>
+    </nav>
+  </main>
+
+  <script>
+    const form = document.getElementById("loginForm");
+    const usernameEl = document.getElementById("username");
+    const passwordEl = document.getElementById("password");
+    const warnBox = document.getElementById("warnBox");
+    const loginBtn = document.getElementById("loginBtn");
+
+    // ✅ 서버 연결 전, 동작 확인용 데모 계정
+    const DEMO_ID = "buyer";
+    const DEMO_PW = "1234";
+
+    function showWarn(msg) {
+      warnBox.textContent = `ㆍ ${msg}`;
+      warnBox.classList.add("show");
+    }
+    function hideWarn() {
+      warnBox.textContent = "";
+      warnBox.classList.remove("show");
+    }
+
+    function goBackOrHome() {
+      if (window.history.length > 1) window.history.back();
+      else location.href = "index.html";
+    }
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      hideWarn();
+
+      const username = usernameEl.value.trim();
+      const password = passwordEl.value;
+
+      // 1) 아이디/비번 공란 or 비번만 입력 → 아이디
+      if (!username) {
+        showWarn("아이디를 입력해 주세요.");
+        usernameEl.focus();
+        return;
+      }
+
+      // 2) 아이디만 입력 → 비밀번호
+      if (!password) {
+        showWarn("비밀번호를 입력해 주세요.");
+        passwordEl.focus();
+        return;
+      }
+
+      loginBtn.disabled = true;
+
+      // 3) 불일치 → 비번 초기화 후 focus
+      if (username !== DEMO_ID || password !== DEMO_PW) {
+        showWarn("아이디, 비밀번호가 일치하지 않습니다.");
+        passwordEl.value = "";
+        passwordEl.focus();
+        loginBtn.disabled = false;
+        return;
+      }
+
+      // 성공 → 이전 페이지로
+      loginBtn.disabled = false;
+      goBackOrHome();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+<!DOCTYPE html>
+< lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>이미지</title>                   
+  </head>
+ /..........
+  <body>
+      <img src="./images/lucy.png" alt="루시갤러리 레인보우 퍼퓸" />
+
+
+      <h1>루시갤러리 레인보우 퍼퓸</h1>
+<!--  -->
+    <ol>
+ 1. 특별한 순간을 위한 선택 2. 나만의 향으로 물들이다 3. 향기로 빛나는 루시갤러리
+      <li><div>1.특별한 순간을 위한 선택</div></li>
+      <li>나만의 향으로 물들이다</li>
+      <li>향기로 빛나는 루시갤러리</li>
+    </ol>
+ </body> 
+</html>
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Tailwind.css 공부하기</title>
+  </head>
+  <body>
+      <!--
+      // 오해
+
+      1. 세부적인 폰트나 스타일을 직접 지정하는 것이 아니라, Tailwind CSS의 클래스를 사용하여 간단하게 스타일을 적용할 수 있다.
+        2. Tailwind CSS는 미리 정의된 유틸리티 클래스를 사용하여 빠르게 스타일링할 수 있도록 도와준다.
+        // 정리
+    
+    <h1 class="text-3xl font-bold">hello</h1>
+    <h2 class="text-2xl font-bold">hello</h2>
+    <h3 class="text-xl font-bold">hello</h3>
+    <h4 class="text-lg font-bold">hello</h4>
+    <h5 class="text-base font-bold">hello</h5>
+    <h6 class="text-sm font-bold">hello</h6>
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Tailwind.css 공부하기</title>
+</head>
+<body>
+    <!--
+    // 오해
+
+    1. 세부적인 폰트나 컬러를 설정할 수 없다: 거짓, 설정할 수 있습니다.
+    2. text-xl, 2xl, 3xl 등등 모든 css가 구현되어 있다: 거짓, 일부만 구현되어 있습니다. 
+       그래서 숫자가 중간중간 비어요.
+     -->
+    <h1 class="text-3xl font-bold">hello</h1>
+    <h2 class="text-2xl font-semibold">hello</h2>
+    <h3 class="text-xl font-medium">hello</h3>
+    <h4>hello</h4>
+    <h5>hello</h5>
+    <h6>hello</h6>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Tailwind.css 공부하기</title>
+</head>
+<body>
+<!-- 
+tailwind에서 주로 사용하는 단위: 예를 들어 space-y-4 에서 
+4는 1단위가 0.25rem 이므로 4*0.25rem = 1rem 이 된다.
+-->
+<div class="border space-y-4">
+    <div class="w-60 h-30 bg-blue-500">hello</div>
+    <div class="w-60 h-30 bg-blue-400">hello</div>
+    <div class="w-60 h-30 bg-red-500">hello</div>
+    <div class="w-60 h-30 bg-red-400">hello</div>
+    <div class="w-[120px] h-[120px] bg-green-400">hello</div>
+    <div class="w-[120px] h-[120px] bg-[#00ffff]">hello</div>
+</div>
+</body>
+</html>

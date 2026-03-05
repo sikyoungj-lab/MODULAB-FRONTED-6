@@ -1,0 +1,17 @@
+ const btn = document.querySelector('.btn-select');
+        const list = document.querySelector('.list-member');
+
+        btn.addEventListener('click', function () {
+            btn.classList.toggle('on');
+        });
+
+        // const btns = document.querySelectorAll('.list-member button');
+
+        list.addEventListener('click', function (event) {
+            if (event.target.nodeName === "BUTTON") {
+                btn.textContent = event.target.textContent;
+                btn.classList.remove('on');
+            }
+        });
+
+        
